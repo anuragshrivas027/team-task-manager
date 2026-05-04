@@ -4,6 +4,13 @@ This project is a Team Task Manager built using the MERN stack (MongoDB, Express
 
 --------------------------------------------------
 
+## Live Deployment
+
+Railway Live Deployed Link:
+https://team-task-manager-production-ea47.up.railway.app/
+
+--------------------------------------------------
+
 ## Project Location (Local Setup)
 
 The project was created inside the C drive.
