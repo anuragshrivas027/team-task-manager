@@ -1,4 +1,4 @@
-## This project
+## This project 
 
 This project is a Team Task Manager built using the MERN stack (MongoDB, Express.js, React.js, Node.js). It allows an admin to manage projects, assign users, create tasks, and track progress through a dashboard.
 
@@ -14,7 +14,9 @@ C:\team-task-manager
 Structure:
 C:\team-task-manager
   ├── client
-  └── server
+  ├── server
+  ├── screenshots
+  └── demo
 
 --------------------------------------------------
 
@@ -114,6 +116,56 @@ http://localhost:5000
 
 --------------------------------------------------
 
+## Build for Production
+
+To create production build of frontend:
+
+cd client
+npm run build
+
+This creates:
+client/build
+
+This folder is used for deployment.
+
+--------------------------------------------------
+
+## Deployment (Railway)
+
+Steps followed:
+
+1. Created GitHub repository and pushed project
+2. Logged into Railway using GitHub
+3. Selected "Deploy from GitHub repo"
+4. Selected project repository
+
+Backend changes required:
+
+- Added static serving:
+
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../client/build/index.html"));
+});
+
+- Updated PORT:
+
+const PORT = process.env.PORT || 5000;
+
+Frontend change:
+
+const API = "";
+
+Environment variables added in Railway:
+
+MONGO_URI=your_mongodb_url
+JWT_SECRET=your_secret
+
+--------------------------------------------------
+
 ## Features Implemented
 
 1. Authentication
@@ -152,6 +204,39 @@ http://localhost:5000
 - Selected users shown separately
 - Remove user using ✕ button
 - Assign user also removable
+
+--------------------------------------------------
+
+## Screenshots
+
+Stored inside:
+C:\team-task-manager\screenshots
+
+Files:
+- login.png
+- dashboard.png
+- create-project.png
+- tasks.png
+
+Usage in README:
+
+![Login](screenshots/login.png)
+![Dashboard](screenshots/dashboard.png)
+![Create Project](screenshots/create-project.png)
+![Tasks](screenshots/tasks.png)
+
+--------------------------------------------------
+
+## Demo Video
+
+Stored inside:
+C:\team-task-manager\demo
+
+File:
+demo.mp4
+
+Note:
+If file size is large, it can be uploaded to Google Drive or YouTube and link can be added here.
 
 --------------------------------------------------
 
