@@ -1,70 +1,211 @@
-# Getting Started with Create React App
+## This project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a Team Task Manager built using the MERN stack (MongoDB, Express.js, React.js, Node.js). It allows an admin to manage projects, assign users, create tasks, and track progress through a dashboard.
 
-## Available Scripts
+--------------------------------------------------
 
-In the project directory, you can run:
+## Project Location (Local Setup)
 
-### `npm start`
+The project was created inside the C drive.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Example path:
+C:\team-task-manager
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Structure:
+C:\team-task-manager
+  ├── client
+  └── server
 
-### `npm test`
+--------------------------------------------------
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Software Installed
 
-### `npm run build`
+Before starting the project, the following software was installed:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Node.js
+- Downloaded from https://nodejs.org
+- Used to run backend server and manage packages
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. npm
+- Comes with Node.js
+- Used to install dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. MongoDB
+- Installed locally OR used MongoDB Atlas (cloud)
+- Used as database
 
-### `npm run eject`
+4. VS Code
+- Used as code editor
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+5. Git (optional)
+- Used for version control and GitHub
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+--------------------------------------------------
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Backend Setup (Server)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Step 1: Create backend folder
 
-## Learn More
+cd C:\team-task-manager
+mkdir server
+cd server
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Step 2: Initialize project
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+npm init -y
 
-### Code Splitting
+Step 3: Install dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+npm install express mongoose cors dotenv jsonwebtoken bcryptjs
 
-### Analyzing the Bundle Size
+Step 4: Create files
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- server.js
+- .env
+- models/
+    - User.js
+    - Task.js
+    - Project.js
+- routes/
+    - auth.js
+    - tasks.js
+    - projects.js
+    - users.js
+- middleware/
+    - auth.js
 
-### Making a Progressive Web App
+--------------------------------------------------
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Frontend Setup (Client)
 
-### Advanced Configuration
+Step 1: Create React app
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+cd C:\team-task-manager
+npx create-react-app client
+cd client
 
-### Deployment
+Step 2: Install dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+npm install axios framer-motion
 
-### `npm run build` fails to minify
+--------------------------------------------------
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## How to Run Project
+
+Start backend:
+
+cd server
+node server.js
+
+OR (if nodemon installed)
+
+npx nodemon server.js
+
+Start frontend:
+
+cd client
+npm start
+
+Frontend runs on:
+http://localhost:3000
+
+Backend runs on:
+http://localhost:5000
+
+--------------------------------------------------
+
+## Features Implemented
+
+1. Authentication
+- Register user
+- Login user
+- JWT authentication
+- Token stored in localStorage
+
+2. Project Management
+- Create project
+- Add multiple members
+- Remove members
+- Delete project
+
+3. Task Management
+- Create task
+- Assign user
+- Select project
+- Add deadline
+- Mark task as done
+- Delete task
+
+4. Dashboard
+- Total tasks
+- Completed tasks
+- Pending tasks
+- Overdue tasks
+
+5. UI Features
+- Dark theme UI
+- Smooth animations using framer-motion
+- Responsive layout
+
+6. Member Selection (Important Feature)
+- Select multiple users
+- Selected users shown separately
+- Remove user using ✕ button
+- Assign user also removable
+
+--------------------------------------------------
+
+## API Endpoints
+
+Auth:
+POST /auth/register
+POST /auth/login
+
+Users:
+GET /users
+
+Projects:
+GET /projects
+POST /projects
+DELETE /projects/:id
+PUT /projects/:id/remove-member
+
+Tasks:
+GET /tasks
+POST /tasks
+PUT /tasks/:id
+DELETE /tasks/:id
+
+Dashboard:
+GET /dashboard
+
+--------------------------------------------------
+
+## Environment Variables (.env)
+
+Create a .env file inside server folder:
+
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+
+--------------------------------------------------
+
+## Notes
+
+- Admin role is required to create projects and tasks
+- Users are fetched dynamically from database
+- UI updates automatically after API calls
+- Axios is used for API communication
+- State is managed using React useState and useEffect
+
+--------------------------------------------------
+
+## Summary
+
+This is a complete full-stack task management system where:
+- Backend handles APIs and database
+- Frontend handles UI and interaction
+- Users can collaborate via projects and tasks
+
+--------------------------------------------------

@@ -1,13 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== GLOBAL ===== */
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply bg-black text-white antialiased;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* ===== INPUT FIX (IMPORTANT) ===== */
+.input {
+  @apply w-full p-3 rounded-lg 
+         bg-gray-800 text-white 
+         border border-gray-700 
+         outline-none 
+         placeholder-gray-400
+         focus:border-blue-500 
+         focus:ring-1 focus:ring-blue-500
+         transition;
+}
+
+/* Fix date input text */
+input[type="date"] {
+  color-scheme: dark;
+}
+
+/* ===== BUTTON ===== */
+.btn-primary {
+  @apply bg-blue-600 hover:bg-blue-700 
+         text-white px-6 py-2 rounded-lg 
+         transition duration-200 ease-in-out;
+}
+
+/* ===== CARD ===== */
+.card {
+  @apply bg-gray-900/60 backdrop-blur-xl 
+         border border-gray-800 
+         p-6 rounded-2xl shadow-lg;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6366f1;
+  border-radius: 10px;
+}
+
+/* ===== SELECTION ===== */
+::selection {
+  background: #6366f1;
+  color: white;
+}
+
+select {
+  color: white;
+  background-color: #1f2937;
 }
